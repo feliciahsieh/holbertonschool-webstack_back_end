@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-"""base_model.py"""
-
+"""
+base_model.py - definition of base_model class
+"""
 import datetime
 import uuid
+
 
 class BaseModel:
     """
