@@ -63,10 +63,10 @@ class User(BaseModel):
         if self.first_name is None and self.last_name is None:
             return self.email
 
-        if self.last_name is None:
+        if self.last_name is None and type(self.first_name) is str:
             return self.first_name
 
-        if self.first_name is None:
+        if self.first_name is None and type(self.last_name) is str:
             return self.last_name
 
         return "{} {}".format(self.first_name, self.last_name)
