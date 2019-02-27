@@ -7,18 +7,29 @@ import hashlib
 from models.base_model import BaseModel
 
 
+# class User(Base, BaseModel):
 class User(BaseModel):
     """
     class User definition
     """
 
+    __tablename__ = 'users'
+    self.email = None
+    self._password = None
+    self.first_name = None
+    self.last_name = None
+
     def __init__(self):
         """
         __init() - initialize User object
         """
-        self._password = None
 
+        # self.email = Column(String(128), nullable=False)
+        # self._password = Column(String(128), nullable=False)
+        # self.first_name = Column(String(128), nullable=True)
+        # self.last_name = Column(String(128), nullable=True)
         self.email = None
+        self._password = None
         self.first_name = None
         self.last_name = None
         super().__init__()
