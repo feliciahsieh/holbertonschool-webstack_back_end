@@ -39,8 +39,7 @@ class User(BaseModel):
             self._password = None
         else:
             value = value.lower()
-            a = hashlib.md5(value.encode()).hexdigest()
-            self._password = a
+            self._password = hashlib.md5(value.encode()).hexdigest()
 
     def display_name(self):
         """
@@ -62,5 +61,24 @@ class User(BaseModel):
         return self.first_name + " " + self.last_name
 
     def __str__(self):
+        """ __str__() - write custom print statement for User instance
+        """
         return "[User] {} - {} - {}".format(
             self.id, self.email, self.display_name())
+
+    def is_valid_password(self, pwd):
+        """
+        is_valid_password - check if valid password
+        Arguments:
+        pwd: password to check
+        Return True if valid password. False if not
+        """
+        if pwd is None:
+            return False
+        if type(pwd) is not str:
+            return False
+        if self._password is None:
+            return False
+        if self._password == hashlib.md5(pwd.encode()).hexdigest():
+            return True
+        return False
