@@ -39,4 +39,7 @@ class User(BaseModel):
         if self.first_name is None:
             return self.last_name
 
-        return self.first_name + self.last_name
+        return self.first_name + " " + self.last_name
+
+    def __str__(self):
+        return "[User] {} - {} - {}".format(self.id, self.email, self.display_name())
