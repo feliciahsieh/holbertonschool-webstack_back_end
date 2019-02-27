@@ -82,3 +82,14 @@ class User(BaseModel):
         if self._password == hashlib.md5(pwd.encode()).hexdigest():
             return True
         return False
+
+    def to_dict(self):
+        """
+        to_dict() - return a serializable representation of an User instance
+        """
+        s = self.__dict__
+        s['created_at'] = str(s['created_at'])[:-7]
+        s['updated_at'] = str(s['updated_at'])[:-7]
+        del s['_password']
+
+        return s
