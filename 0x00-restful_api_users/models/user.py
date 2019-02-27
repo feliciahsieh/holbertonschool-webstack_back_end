@@ -14,10 +14,10 @@ class User(BaseModel):
     """
 
     __tablename__ = 'users'
-    self.email = None
-    self._password = None
-    self.first_name = None
-    self.last_name = None
+    email = None
+    _password = None
+    first_name = None
+    last_name = None
 
     def __init__(self):
         """
