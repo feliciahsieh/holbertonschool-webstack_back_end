@@ -3,6 +3,7 @@
 user.py - class definition of User
 """
 
+import hashlib
 from models.base_model import BaseModel
 
 
@@ -21,6 +22,25 @@ class User(BaseModel):
         self.first_name = None
         self.last_name = None
         super().__init__()
+
+    @property
+    def password(self):
+        """
+        Getter for password
+        """
+        return self._password
+
+    @password.setter
+    def password(self, value):
+        """
+        Setter for password
+        """
+        if value is None or type(value) is not str:
+            self._password = None
+        else:
+            value = value.lower()
+            a = hashlib.md5(value.encode()).hexdigest()
+            self._password = a
 
     def display_name(self):
         """
@@ -42,4 +62,5 @@ class User(BaseModel):
         return self.first_name + " " + self.last_name
 
     def __str__(self):
-        return "[User] {} - {} - {}".format(self.id, self.email, self.display_name())
+        return "[User] {} - {} - {}".format(
+            self.id, self.email, self.display_name())
