@@ -90,7 +90,7 @@ class User(BaseModel):
             return False
         if self._password is None:
             return False
-        if self._password == hashlib.md5(pwd.encode()).hexdigest():
+        if self._password == hashlib.md5(pwd.encode()).hexdigest().lower():
             return True
         return False
 
