@@ -71,11 +71,11 @@ class User(BaseModel):
 
         return "{} {}".format(self.first_name, self.last_name)
 
-    # def __str__(self):
-    #    """ __str__() - write custom print statement for User instance
-    #    """
-    #     return "[User] {} - {} - {}".format(
-    #        self.id, self.email, self.display_name())
+    def __str__(self):
+        """ __str__() - write custom print statement for User instance
+        """
+        return "[User] {} - {} - {}".format(
+            self.id, self.email, self.display_name())
 
     def is_valid_password(self, pwd):
         """

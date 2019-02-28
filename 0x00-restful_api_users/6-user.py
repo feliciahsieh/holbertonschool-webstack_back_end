@@ -12,4 +12,5 @@ user.last_name = "Dylan"
 d_user = user.to_dict()
 
 for user_attribute in d_user.keys():
-    print("{} ({}): {}".format(user_attribute, type(d_user[user_attribute]), d_user[user_attribute]))
+    print("{} ({}): {}".format(
+        user_attribute, type(d_user[user_attribute]), d_user[user_attribute]))
