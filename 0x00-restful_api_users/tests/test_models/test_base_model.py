@@ -4,11 +4,15 @@ test_base_model.py - unit tests BaseModel class
 """
 
 import datetime
+# from models.base_model import BaseModel
+import inspect
 import models
 import pep8 as pycodestyle
 import unittest
 from unittest import mock
 import uuid
+
+
 BaseModel = models.base_model.BaseModel
 module_doc = models.base_model.__doc__
 
@@ -94,19 +98,22 @@ class TestBaseModel(unittest.TestCase):
         """
         test_created_at() - does created_at exists
         """
+        bm1 = BaseModel()
         d = datetime.datetime.now()
-        self.assertEqual(type(self.created_at), type(d))
+        self.assertEqual(type(bm1.created_at), type(d))
 
     def test_updated_at(self):
         """
         test_updated_at() - does updated_at exists
         """
+        bm1 = BaseModel()
         d = datetime.datetime.now()
-        self.assertEqual(type(self.updated_at), type(d))
+        self.assertEqual(type(bm1.updated_at), type(d))
 
     def test_id_unique(self):
         """
         test_id_unique() - is id unique
         """
+        bm1 = BaseModel()
         n = uuid.uuid4()
-        self.assertEqual(self.id, n)
+        self.assertNotEqual(bm1.id, n)
