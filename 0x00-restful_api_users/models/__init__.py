@@ -1,5 +1,7 @@
 # mysqlclient (a maintained fork of MySQL-Python)
 from models.base_model import Base, BaseModel
+from models import base_model, user
+
 import os
 import sqlalchemy
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -10,12 +12,12 @@ from sqlalchemy.ext.declarative import declarative_base
 # connect to server
 host = os.getenv('HBNB_YELP_MYSQL_HOST')
 user = os.getenv('HBNB_YELP_MYSQL_USER')
-pwd = os.getenv('HBNB_YELP_MYSQL_PWD')
+passw = os.getenv('HBNB_YELP_MYSQL_PWD')
 db = os.getenv('HBNB_YELP_MYSQL_DB')
 env = os.getenv('HBNB_YELP_ENV')
 
 db_engine = sqlalchemy.create_engine(
-    'mysql+mysqldb://{}:{}@{}/{}'.format(user, pwd, host, db))
+    'mysql+mysqldb://{}:{}@{}/{}'.format(user, passw, host, db))
 
 if env == 'test':
     Base.metadata.drop_all(bind=db_engine)

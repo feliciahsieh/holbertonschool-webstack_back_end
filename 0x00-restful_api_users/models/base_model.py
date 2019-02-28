@@ -5,6 +5,7 @@ base_model.py - definition of base_model class
 
 from datetime import datetime
 import uuid
+import base_model
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, DateTime, Integer, String
 
@@ -14,6 +15,7 @@ classes should inherit. When the class definition is completed,
 a new Table and mapper() will have been generated
 """
 Base = declarative_base()
+
 
 class BaseModel:
     """
@@ -30,3 +32,13 @@ class BaseModel:
         """
         self.id = str(uuid.uuid4())
         self.created_at = self.updated_at = str(datetime.utcnow())
+
+    def all(cls):
+        """
+        all() - list all classes and in sorted order by created_at attribute
+        """
+        obj = {}
+        # db_session = 
+        # sort
+        print("my cls: {}".format(self.cls))
+        return obj
