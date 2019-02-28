@@ -6,8 +6,7 @@ base_model.py - definition of base_model class
 from datetime import datetime
 import uuid
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-from sqlalchemy import Table, Column, DateTime, Integer, String
+from sqlalchemy import Column, DateTime, Integer, String
 
 
 """ SQLAlchemy returns a new Base class from which all mapped
@@ -30,4 +29,4 @@ class BaseModel:
         Returns: N/A
         """
         self.id = str(uuid.uuid4())
-        self.created_at = self.updated_at = datetime.datetime.now()
+        self.created_at = self.updated_at = str(datetime.utcnow())

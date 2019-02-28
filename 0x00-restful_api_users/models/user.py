@@ -5,6 +5,7 @@ user.py - class definition of User
 
 import hashlib
 from models.base_model import BaseModel, Base
+from sqlalchemy import Column, DateTime, Integer, String
 
 
 class User(Base, BaseModel):
@@ -13,25 +14,11 @@ class User(Base, BaseModel):
     """
 
     __tablename__ = 'users'
-    email = None
-    _password = None
-    first_name = None
-    last_name = None
 
-    def __init__(self):
-        """
-        __init() - initialize User object
-        """
-
-        # self.email = Column(String(128), nullable=False)
-        # self._password = Column(String(128), nullable=False)
-        # self.first_name = Column(String(128), nullable=True)
-        # self.last_name = Column(String(128), nullable=True)
-        self.email = None
-        self._password = None
-        self.first_name = None
-        self.last_name = None
-        super().__init__()
+    email = Column(String(128), nullable=False)
+    first_name = Column(String(128), nullable=True)
+    last_name = Column(String(128), nullable=True)
+    _password = Column(String(128), nullable=False)
 
     @property
     def password(self):
