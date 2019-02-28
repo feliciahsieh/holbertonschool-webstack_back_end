@@ -74,8 +74,8 @@ class User(BaseModel):
     def __str__(self):
         """ __str__() - write custom print statement for User instance
         """
-        return "[{}] {} - {} - {}".format(self.__class__.__name__,
-            self.id, self.email, self.display_name())
+        return "[{}] {} - {} - {}".format(
+            self.__class__.__name__, self.id, self.email, self.display_name())
 
     def is_valid_password(self, pwd):
         """
