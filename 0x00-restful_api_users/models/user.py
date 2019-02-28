@@ -56,9 +56,9 @@ class User(BaseModel):
         """
         display_name() - displays full name of User instance
         """
-        if self.email is None and self.first_name is None \
-           and self.last_name is None:
-            return ""
+        if self.email is None:
+            if self.first_name is None and self.last_name is None:
+                return ""
 
         if self.first_name is None and self.last_name is None:
             return self.email
