@@ -4,10 +4,11 @@ user.py - class definition of User
 """
 
 import hashlib
-from models.base_model import BaseModel, Base
+from models.base_model import BaseModel
 
 
-class User(Base, BaseModel):
+# class User(Base, BaseModel):
+class User(BaseModel):
     """
     class User definition
     """
