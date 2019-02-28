@@ -15,7 +15,7 @@ db = os.getenv('HBNB_YELP_MYSQL_DB')
 env = os.getenv('HBNB_YELP_ENV')
 
 db_engine = sqlalchemy.create_engine(
-    'mysql+mysqldb://{}:{}@{}/db'.format(user, pwd, host, db))
+    'mysql+mysqldb://{}:{}@{}/{}'.format(user, pwd, host, db))
 
 if env == 'test':
     Base.metadata.drop_all(bind=db_engine)
