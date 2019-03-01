@@ -1,6 +1,7 @@
 # mysqlclient (a maintained fork of MySQL-Python)
-from models.base_model import Base, BaseModel
-from models import base_model, user
+from models.user import User
+from models.base_model import BaseModel
+from models.base_model import Base
 
 import os
 import sqlalchemy
@@ -24,6 +25,11 @@ if env == 'test':
 
 Base.metadata.create_all(db_engine)
 
+
+# expire_on_commit flag is Needed on the sessionmaker to avoid expiring object
+# once you commit. An expired object will need to be refreshed from the
+# database before accessing a property thus it needs to be in a session scope.
+# Without expiring it, you can access properties out of the session scope.
 session_factory = sessionmaker(bind=db_engine, expire_on_commit=False)
 Session = scoped_session(session_factory)
 db_session = Session()

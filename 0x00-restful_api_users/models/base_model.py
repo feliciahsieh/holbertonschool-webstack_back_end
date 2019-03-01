@@ -5,10 +5,8 @@ base_model.py - definition of base_model class
 
 from datetime import datetime
 import uuid
-import base_model
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, DateTime, Integer, String
-
 
 """ SQLAlchemy returns a new Base class from which all mapped
 classes should inherit. When the class definition is completed,
@@ -33,12 +31,13 @@ class BaseModel:
         self.id = str(uuid.uuid4())
         self.created_at = self.updated_at = str(datetime.utcnow())
 
+    @classmethod
     def all(cls):
         """
-        all() - list all classes and in sorted order by created_at attribute
+        all() - returns a dictionary of all the objects depending on the class.
+        Using @classmethod means the class, a session, & attribute can be passed
         """
-        obj = {}
-        # db_session = 
-        # sort
-        print("my cls: {}".format(self.cls))
-        return obj
+        from models import db_session
+
+        query = db_session.query(cls).order_by(cls.created_at).all()
+        return(query)
