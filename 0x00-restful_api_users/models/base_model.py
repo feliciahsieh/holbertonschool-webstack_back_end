@@ -28,8 +28,11 @@ class BaseModel:
         Arguments: N/A
         Returns: N/A
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = self.updated_at = datetime.utcnow()
+        try:
+            self.id = str(uuid.uuid4())
+            self.created_at = self.updated_at = datetime.utcnow()
+        except Exception as e:
+            print(e)
 
     @classmethod
     def all(cls):
