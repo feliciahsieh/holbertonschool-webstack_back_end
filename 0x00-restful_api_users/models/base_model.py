@@ -66,3 +66,27 @@ class BaseModel:
             return None
 
         return result
+
+    @classmethod
+    def first(cls):
+        """
+        first() - returns first instance of cls based on created_at
+        """
+        from models import db_session
+        from sqlalchemy import asc
+
+        result = db_session.query(cls).order_by(
+            cls.created_at.asc()).limit(1).all()[0]
+        return result
+
+    @classmethod
+    def last(cls):
+        """
+        last() - returns last instance of cls based on created_at
+        """
+        from models import db_session
+        from sqlalchemy import desc
+
+        result = db_session.query(cls).order_by(
+            cls.created_at.desc()).limit(1).all()[0]
+        return result
