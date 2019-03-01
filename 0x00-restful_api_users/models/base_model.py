@@ -61,7 +61,7 @@ class BaseModel:
 
         result = db_session.query(cls).filter(cls.id == id).first()
         if result is None:
-            print("Nothing found")
+            return None
         if id is None or type(id) is not str:
             return None
 
