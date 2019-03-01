@@ -51,3 +51,18 @@ class BaseModel:
         from sqlalchemy import func
 
         return db_session.query(cls.created_at).count()
+
+    @classmethod
+    def get(cls, id):
+        """
+        get() - returns instance of cls with specific id
+        """
+        from models import db_session
+
+        result = db_session.query(cls).filter(cls.id == id).first()
+        if result is None:
+            print("Nothing found")
+        if id is None or type(id) is not str:
+            return None
+
+        return result
