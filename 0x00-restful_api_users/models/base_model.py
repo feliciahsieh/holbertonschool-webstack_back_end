@@ -74,10 +74,14 @@ class BaseModel:
         """
         from models import db_session
         from sqlalchemy import asc
+        import logging
 
-        result = db_session.query(cls).order_by(
-            cls.created_at.asc()).limit(1).all()[0]
-        return result
+        try:
+            result = db_session.query(cls).order_by(
+                cls.created_at.asc()).limit(1).all()[0]
+            return result
+        except Exception as e:
+            return None
 
     @classmethod
     def last(cls):
@@ -86,7 +90,12 @@ class BaseModel:
         """
         from models import db_session
         from sqlalchemy import desc
+        import logging
 
-        result = db_session.query(cls).order_by(
-            cls.created_at.desc()).limit(1).all()[0]
-        return result
+        try:
+            result = db_session.query(cls).order_by(
+                cls.created_at.desc()).limit(1).all()[0]
+
+            return result
+        except Exception as e:
+            return None
