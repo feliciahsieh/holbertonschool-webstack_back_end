@@ -35,7 +35,7 @@ class BaseModel:
     def all(cls):
         """
         all() - returns a dictionary of all the objects depending on the class.
-        Using @classmethod means the class, a session, & attribute can be passed
+        Using @classmethod so the class, a session, & attribute can be passed
         """
         from models import db_session
 
