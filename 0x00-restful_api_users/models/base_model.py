@@ -41,3 +41,13 @@ class BaseModel:
 
         query = db_session.query(cls).order_by(cls.created_at).all()
         return(query)
+
+    @classmethod
+    def count(cls):
+        """
+        count() - returns number of instances of a class
+        """
+        from models import db_session
+        from sqlalchemy import func
+
+        return db_session.query(cls.created_at).count()
