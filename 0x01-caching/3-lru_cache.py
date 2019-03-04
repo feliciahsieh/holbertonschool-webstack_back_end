@@ -14,7 +14,7 @@ class LRUCache(BaseCaching):
         super().__init__()
 
     def put(self, key, item):
-        """ put() - add entry to LIFO cache
+        """ put() - add entry to LRU cache
         Arguments:
         key: key for dictionary
         item: item to add to dictionary
