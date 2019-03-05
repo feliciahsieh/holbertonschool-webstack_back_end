@@ -9,7 +9,7 @@ class MRUCache(BaseCaching):
     """
 
     def __init__(self):
-        """ __init__() - LRUCache constructor
+        """ __init__() - MRUCache constructor
         """
         super().__init__()
 
@@ -32,7 +32,10 @@ class MRUCache(BaseCaching):
                     self.cache_data[key] = item
                     self.cache_data.move_to_end(key)
                 else:
+                    value = self.cache_data.popitem(last=True)
+                    print("DISCARD: {}".format(value[0]))
                     self.cache_data[key] = item
+                    self.cache_data.move_to_end(key)
 
     def get(self, key):
         """ get() - get entry from LIFO cache
@@ -41,5 +44,5 @@ class MRUCache(BaseCaching):
         """
         if key is None or key not in self.cache_data:
             return None
-        value = self.cache_data.popitem(last=True)
-        return value[0]
+        self.cache_data.move_to_end(key)
+        return self.cache_data[key]
