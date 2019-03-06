@@ -36,19 +36,11 @@ class LFUCache(BaseCaching):
 
                 CntTup = [(key, self.count[key]) for key in order_of_keys_c]
                 self.count = OrderedDict(CntTup)
-
             else:
                 if key not in self.cache_data:
-                    # find lowest count to delete
-                    # minKey = min(self.cache_data, key=self.cache_data.get)
                     minKey = min(self.count, key=self.count.get)
-                    #print("**minKey: {}".format(minKey))
                     del self.cache_data[minKey]
                     print("DISCARD: {}".format(minKey))
-                    #for k, v in self.cache_data.items():
-                    #    if v == minKey:
-                    #        del self.count[k]
-                    #        break
                     del self.count[minKey]
                     self.cache_data[key] = item
                     self.count[key] = 1
@@ -63,7 +55,7 @@ class LFUCache(BaseCaching):
         """
         if key is None or key not in self.cache_data:
             return None
-        self.cache_data.move_to_end(key, last=False)
+        self.cache_data.move_to_end(key, last=True)
         self.count[key] += 1
-        self.count.move_to_end(key, last=False)
+        self.count.move_to_end(key, last=True)
         return self.cache_data[key]
