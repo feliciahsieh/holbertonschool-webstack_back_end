@@ -23,28 +23,37 @@ class LFUCache(BaseCaching):
         if key is not None and item is not None:
             if len(self.cache_data) < BaseCaching.MAX_ITEMS:
                 order_of_keys = self.cache_data.keys()
-                self.cache_data[key] = item
+                order_of_keys_c = self.count.keys()
+                if key in self.cache_data:
+                    self.cache_data[key] = item
+                    self.count[key] += 1
+                else:
+                    self.cache_data[key] = item
+                    self.count[key] = 1
+
                 myTup = [(key, self.cache_data[key]) for key in order_of_keys]
                 self.cache_data = OrderedDict(myTup)
 
-                if key not in self.count:
-                    self.count[key] = 1
-                else:
-                    self.count[key] += 1
+                CntTup = [(key, self.count[key]) for key in order_of_keys_c]
+                self.count = OrderedDict(CntTup)
+
             else:
                 if key not in self.cache_data:
-                    value = self.cache_data.popitem(last=False)
-                    print("DISCARD: {}".format(value[0]))
-                    for k, v in self.cache_data.items():
-                        if v == value:
-                            del self.count[key]
-                            break
-
-                self.cache_data[key] = item
-                self.cache_data.move_to_end(key)
-                if key not in self.count:
+                    # find lowest count to delete
+                    # minKey = min(self.cache_data, key=self.cache_data.get)
+                    minKey = min(self.count, key=self.count.get)
+                    #print("**minKey: {}".format(minKey))
+                    del self.cache_data[minKey]
+                    print("DISCARD: {}".format(minKey))
+                    #for k, v in self.cache_data.items():
+                    #    if v == minKey:
+                    #        del self.count[k]
+                    #        break
+                    del self.count[minKey]
+                    self.cache_data[key] = item
                     self.count[key] = 1
                 else:
+                    self.cache_data[key] = item
                     self.count[key] += 1
 
     def get(self, key):
@@ -56,4 +65,5 @@ class LFUCache(BaseCaching):
             return None
         self.cache_data.move_to_end(key, last=False)
         self.count[key] += 1
+        self.count.move_to_end(key, last=False)
         return self.cache_data[key]
