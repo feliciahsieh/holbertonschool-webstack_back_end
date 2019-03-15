@@ -5,7 +5,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def index():
     """ index() - creates index.html
     Arguments: N/A
@@ -13,9 +13,9 @@ def index():
     """
     return "Holberton School"
 
-@app.route('/c')
+@app.route('/c', strict_slashes=False)
 def messageC():
-    """ index() - creates index.html
+    """ messageC() - creates index.html
     Arguments: N/A
     Returns: N/A
     """
@@ -23,4 +23,3 @@ def messageC():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
-    app.url_map.strict_slashes = False
