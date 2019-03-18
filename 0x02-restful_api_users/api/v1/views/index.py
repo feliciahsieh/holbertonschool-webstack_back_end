@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ index.py - index fil e """
-
+from api.v1.views import app_views
 from flask import jsonify
 
-@app.route("/status", strict_slashes=False)
+@app_views.route("/status", strict_slashes=False)
 def msgStatus():
     """msgStatus - return status msg """
     return jsonify({"status":"OK"})
