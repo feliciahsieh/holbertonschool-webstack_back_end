@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """ 3-warmup_flask.py - start a flask app with environment vars """
 
-from flask import Flask
-import jsonify
+from flask import Flask, jsonify
 import os
 
 app = Flask(__name__)
@@ -33,7 +32,7 @@ def messageHBTN():
     Returns: N/A
     """
     r = {
-        "C": “"C is fun",
+        "C": "C is fun",
         "Python": "is cool",
         "Sysadmin": "is hiring"
     }
