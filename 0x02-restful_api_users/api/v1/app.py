@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ app.py """
+import os
 from flask import Flask, jsonify
 from api.v1.views import app_views
-import os
 from flask import render_template
 
 
