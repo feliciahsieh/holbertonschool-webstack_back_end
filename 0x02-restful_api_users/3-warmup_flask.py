@@ -32,7 +32,7 @@ def messageHBTN():
     Returns: N/A
     """
     r = {
-        "C": "C is fun",
+        "C": "is fun",
         "Python": "is cool",
         "Sysadmin": "is hiring"
     }
