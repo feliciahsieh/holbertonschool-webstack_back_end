@@ -4,12 +4,7 @@ app.py
 """
 import os
 from api.v1.views import app_views
-<<<<<<< HEAD
-from flask import Flask, jsonify, render_template
-
-=======
 from flask import Flask, jsonify
->>>>>>> 5159687f7faed990eacad0a1091b3f8a3e9927a3
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
