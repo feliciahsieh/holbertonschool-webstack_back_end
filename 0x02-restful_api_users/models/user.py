@@ -86,9 +86,12 @@ class User(BaseModel, Base):
         """
         to_dict() - return a serializable representation of an User instance
         """
+        r = {}
         s = self.__dict__
-        s['created_at'] = str(s['created_at'])[:-7]
-        s['updated_at'] = str(s['updated_at'])[:-7]
-        del s['_password']
-
-        return s
+        r['created_at'] = str(s['created_at'])[:-7]
+        r['updated_at'] = str(s['updated_at'])[:-7]
+        r['id'] = str(s['id'])
+        r['first_name'] = str(s['first_name'])
+        r['last_name'] = str(s['last_name'])
+        r['email'] = str(s['email'])
+        return r
