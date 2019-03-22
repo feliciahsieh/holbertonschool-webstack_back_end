@@ -88,8 +88,8 @@ class User(BaseModel, Base):
         """
         r = {}
         s = self.__dict__
-        r['created_at'] = str(s['created_at'])[:-7]
-        r['updated_at'] = str(s['updated_at'])[:-7]
+        r['created_at'] = str(s['created_at'])
+        r['updated_at'] = str(s['updated_at'])
         r['id'] = str(s['id'])
         r['first_name'] = str(s['first_name'])
         r['last_name'] = str(s['last_name'])
