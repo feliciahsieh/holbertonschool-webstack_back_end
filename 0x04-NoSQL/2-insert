@@ -1,0 +1,3 @@
+// 2-insert - insert a document into mongodb collection
+db.createCollection("school")
+db.school.insert({ name: "Holberton school" })
