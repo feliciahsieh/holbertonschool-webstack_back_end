@@ -1,0 +1,2 @@
+// 1-use_or_create_database - create a database in mongodb
+use my_db
