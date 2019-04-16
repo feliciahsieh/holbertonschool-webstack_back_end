@@ -1,0 +1,2 @@
+// 3-all - lists all documents in collection, school
+db.school.find().pretty()
