@@ -11,7 +11,7 @@ def insert_school(mongo_collection, **kwargs):
        kwargs: data set
     Returns: _id
     """
-    if mongo_collection.find_one() is None:
+    if mongo_collection.find_one() is None or kwargs is None:
         return []
 
     data = {}
