@@ -1,0 +1,2 @@
+// 5-count - count # of documents in school collection
+db.school.count()
