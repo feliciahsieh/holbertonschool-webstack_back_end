@@ -1,4 +1,3 @@
 // 6-update - update new attribute to school collection
-//db.school.updateMany({name : "Holberton school"}, {$unset: {upsert : true}}, {upsert : false})
 
-db.school.updateMany({name : "Holberton school"}, {$set: {address : "972 Mission street"}}, {upsert : false})
+db.school.update({name: "Holberton school"}, {$set: {address: "972 Mission street"}}, {multi: true})
