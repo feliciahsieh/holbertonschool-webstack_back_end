@@ -9,14 +9,6 @@ def insert_school(mongo_collection, **kwargs):
     Arguments:
        mongo_collection: pymongo collections object
        kwargs: data set
-    Returns: _id
+    Returns: _id of created object
     """
-    if mongo_collection.find_one() is None or kwargs is None:
-        return []
-
-    data = {}
-    for x in kwargs:
-        data.update({x: kwargs[x]})
-
-    id = mongo_collection.insert(data)
-    return id
+    return mongo_collection.insert(kwargs)
