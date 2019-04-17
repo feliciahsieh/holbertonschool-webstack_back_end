@@ -1,0 +1,2 @@
+// 100-find - find all docs w/ name starting w/ "Holberton" in school collection
+db.school.find({"name": {"$regex": "^Holberton"}})
